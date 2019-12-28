@@ -21,6 +21,8 @@ enum custom_keycodes {
     TMUX_TAB_DEL,
     TMUX_TAB_LEFT,
     TMUX_TAB_RIGHT,
+    TMUX_SPLIT_V,
+    TMUX_SPLIT_H,
 
     TMUX_UP,
     TMUX_DOWN,
@@ -45,6 +47,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case VIM_QUIT:
             if (record->event.pressed) {
                 SEND_STRING(":q!\n");
+            }
+            break;
+        case TMUX_TAB_NEW:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"c");
+            }
+            break;
+        case TMUX_TAB_DEL:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"xy");
+            }
+            break;
+        case TMUX_TAB_LEFT:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"p");
+            }
+            break;
+        case TMUX_TAB_RIGHT:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"n");
+            }
+            break;
+        case TMUX_SPLIT_V:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"%");
+            }
+            break;
+        case TMUX_SPLIT_H:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b")"\"");
             }
             break;
     }
