@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 
 #define SKYPE_MUTE LGUI(KC_F4)
+#define CAD LCTL(LALT(KC_DEL))
 
 enum custom_keycodes {
     VIM_WRITE = SAFE_RANGE,
@@ -23,6 +24,7 @@ enum custom_keycodes {
     TMUX_TAB_RIGHT,
     TMUX_SPLIT_V,
     TMUX_SPLIT_H,
+    TMUX_SPLIT_MOVE,
     TMUX_COPY_MODE,
     TMUX_PASTE,
 
@@ -50,27 +52,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case VIM_WNDW_UP:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("w")"k");
+                SEND_STRING(SS_LCTL("w") "k");
             }
             break;
         case VIM_WNDW_DOWN:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("w")"j");
+                SEND_STRING(SS_LCTL("w") "j");
             }
             break;
         case VIM_WNDW_LEFT:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("w")"h");
+                SEND_STRING(SS_LCTL("w") "h");
             }
             break;
         case VIM_WNDW_RIGHT:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("w")"l");
+                SEND_STRING(SS_LCTL("w") "l");
             }
             break;
         case VIM_WNDW_EQ:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("w")"=");
+                SEND_STRING(SS_LCTL("w") "=");
             }
             break;
 
@@ -97,42 +99,47 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TMUX_TAB_NEW:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"c");
+                SEND_STRING(SS_LCTL("b") "c");
             }
             break;
         case TMUX_TAB_DEL:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"xy");
+                SEND_STRING(SS_LCTL("b") "xy");
             }
             break;
         case TMUX_TAB_LEFT:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"p");
+                SEND_STRING(SS_LCTL("b") "p");
             }
             break;
         case TMUX_TAB_RIGHT:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"n");
+                SEND_STRING(SS_LCTL("b") "n");
             }
             break;
         case TMUX_SPLIT_V:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"%");
+                SEND_STRING(SS_LCTL("b") "%");
             }
             break;
         case TMUX_SPLIT_H:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"\"");
+                SEND_STRING(SS_LCTL("b") "\"");
+            }
+            break;
+        case TMUX_SPLIT_MOVE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL("b") "o");
             }
             break;
         case TMUX_COPY_MODE:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"[");
+                SEND_STRING(SS_LCTL("b") "[");
             }
             break;
         case TMUX_PASTE:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("b")"]");
+                SEND_STRING(SS_LCTL("b") "]");
             }
             break;
 
@@ -187,13 +194,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT(
         _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PSCREEN, KC_DEL,
         _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,
-        _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, _______, _______, _______,
+        CAD, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, _______, _______, _______,
         _______,  _______, SKYPE_MUTE, _______, _______, _______, _______, _______, KC_SLEP, KC_WAKE, KC_PWR, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
 
     LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, VIM_QUIT, VIM_WRITE, TMUX_SPLIT_V, TMUX_SPLIT_H, _______, _______, TMUX_TAB_LEFT, TMUX_TAB_RIGHT, TMUX_TAB_NEW, TMUX_TAB_DEL, _______, _______, _______,
+        _______, VIM_QUIT, VIM_WRITE, TMUX_SPLIT_V, TMUX_SPLIT_H, _______, TMUX_SPLIT_MOVE, TMUX_TAB_LEFT, TMUX_TAB_RIGHT, TMUX_TAB_NEW, TMUX_TAB_DEL, _______, _______, _______,
         _______, GIT_ADD, GIT_COMMIT, GIT_DIFF, GIT_STAT, TMUX_COPY_MODE, VIM_WNDW_LEFT, VIM_WNDW_DOWN, VIM_WNDW_UP, VIM_WNDW_RIGHT, _______, _______, _______,
         _______, _______, GIT_PULL, GIT_PUSH, GIT_FETCH, TMUX_PASTE, VIM_WNDW_EQ, VIM_TAB_LEFT, VIM_TAB_RIGHT, VIM_TAB_NEW, VIM_TAB_DEL, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
