@@ -1,4 +1,4 @@
 #pragma once
 
-#define USE_SERIAL
-#define MASTER_LEFT
+#define USE_I2C
+#define MASTER_RIGHT
