@@ -40,3 +40,10 @@ enum custom_keycodes {
     GIT_PUSH,
     GIT_COMMIT,
 };
+
+enum unicode_names {
+    THUMB,
+    THINK,
+    FACE,
+    LAUGH,
+};
