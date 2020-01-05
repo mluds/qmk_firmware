@@ -7,6 +7,38 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        // Add shifted keys to those that don't have them
+        case KC_BSPC:
+            return custom_keycode_on_modifiers(
+                MOD_BIT(KC_LSFT), -1, record,  KC_DEL
+            ) && custom_keycode_on_modifiers(
+                MOD_BIT(KC_RSFT), -1, record,  KC_DEL
+            );
+        case KC_TAB:
+            return custom_keycode_on_modifiers(
+                MOD_BIT(KC_LSFT), -1, record,  KC_TILD
+            ) && custom_keycode_on_modifiers(
+                MOD_BIT(KC_RSFT), -1, record,  KC_TILD
+            );
+        case KC_ESC:
+            return custom_keycode_on_modifiers(
+                MOD_BIT(KC_LSFT), -1, record,  KC_GRV
+            ) && custom_keycode_on_modifiers(
+                MOD_BIT(KC_RSFT), -1, record,  KC_GRV
+            );
+        case KC_ENT:
+            return custom_keycode_on_modifiers(
+                MOD_BIT(KC_LSFT), -1, record,  KC_BSLS
+            ) && custom_keycode_on_modifiers(
+                MOD_BIT(KC_RSFT), -1, record,  KC_BSLS
+            );
+        case KC_SPC:
+            return custom_keycode_on_modifiers(
+                MOD_BIT(KC_LSFT), -1, record,  KC_UNDS
+            ) && custom_keycode_on_modifiers(
+                MOD_BIT(KC_RSFT), -1, record,  KC_UNDS
+            );
+
         case VIM_WRITE:
             if (record->event.pressed) {
                 SEND_STRING(":w\n");
