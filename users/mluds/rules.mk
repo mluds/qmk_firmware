@@ -1,2 +1,4 @@
 SRC += mluds.c
+NKRO_ENABLE = yes
 UNICODEMAP_ENABLE = yes
+EXTRAKEY_ENABLE = yes
