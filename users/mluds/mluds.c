@@ -183,8 +183,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 const uint32_t PROGMEM unicode_map[] = {
-    [THUMB]  = 0x1F44D, // 👍
+    [THUMB] = 0x1F44D, // 👍
     [THINK] = 0x1F914, // 🤔
     [FACE] = 0x1F610, // 😐
     [LAUGH] = 0x1F602, // 😂
+    [EGGY] = 0x1F346, // 🍆
 };

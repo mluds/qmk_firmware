@@ -46,4 +46,5 @@ enum unicode_names {
     THINK,
     FACE,
     LAUGH,
+    EGGY,
 };
