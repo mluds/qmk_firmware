@@ -6,9 +6,13 @@
 
 #define SKYPE_MUTE LGUI(KC_F4)
 #define CAD LCTL(LALT(KC_DEL))
+#define ALT_F4 LALT(KC_F4)
+#define ALT_TAB LALT(KC_TAB)
 
 enum custom_keycodes {
-    VIM_WRITE = SAFE_RANGE,
+    CD = SAFE_RANGE,
+
+    VIM_WRITE,
     VIM_QUIT,
 
     VIM_WNDW_UP,

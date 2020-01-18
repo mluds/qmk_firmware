@@ -39,6 +39,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 MOD_BIT(KC_RSFT), -1, record,  KC_UNDS
             );
 
+        case CD:
+            if (record->event.pressed) {
+                SEND_STRING("cd ..\n");
+            }
+            break;
+
         case VIM_WRITE:
             if (record->event.pressed) {
                 SEND_STRING(":w\n");
