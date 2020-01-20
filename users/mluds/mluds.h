@@ -10,45 +10,53 @@
 #define ALT_TAB LALT(KC_TAB)
 
 enum custom_keycodes {
+    // go up one directory
     CD = SAFE_RANGE,
 
-    VIM_WRITE,
-    VIM_QUIT,
+    // vim write/quit
+    VI_W,
+    VI_Q,
 
-    VIM_WNDW_UP,
-    VIM_WNDW_DOWN,
-    VIM_WNDW_LEFT,
-    VIM_WNDW_RIGHT,
-    VIM_WNDW_EQ,
+    // vim windows
+    VI_WU,  // up
+    VI_WD,  // down
+    VI_WL,  // left
+    VI_WR,  // right
+    VI_WE,  // set equal width
 
-    VIM_TAB_NEW,
-    VIM_TAB_DEL,
-    VIM_TAB_LEFT,
-    VIM_TAB_RIGHT,
+    // vim tabs
+    VI_TN,  // new tab
+    VI_TD,  // delete tab
+    VI_TL,  // move tab left
+    VI_TR,  // move tab right
 
-    TMUX_TAB_NEW,
-    TMUX_TAB_DEL,
-    TMUX_TAB_LEFT,
-    TMUX_TAB_RIGHT,
-    TMUX_SPLIT_V,
-    TMUX_SPLIT_H,
-    TMUX_SPLIT_MOVE,
-    TMUX_COPY_MODE,
-    TMUX_PASTE,
+    // tmux tabs (analogous to vim)
+    TM_TN,
+    TM_TD,
+    TM_TL,
+    TM_TR,
 
-    GIT_STAT,
-    GIT_DIFF,
-    GIT_ADD,
-    GIT_FETCH,
-    GIT_PULL,
-    GIT_PUSH,
-    GIT_COMMIT,
+    // split tmux pane vertically and horizontally
+    TM_VS,
+    TM_HS,
+
+    TM_MS,  // move to other split
+    TM_CM,  // tmux copy mode
+    TM_P,  // tmux paste
+
+    GIT_S,  // status
+    GIT_D,  // diff
+    GIT_A,  // add all
+    GIT_F,  // fetch
+    GIT_PL, // pull
+    GIT_PU, // push
+    GIT_C,  // commit
 };
 
 enum unicode_names {
-    THUMB,
-    THINK,
-    FACE,
-    LAUGH,
-    EGGY,
+    THUM,  // 👍
+    THNK,  // 🤔
+    FACE,  // 😐
+    HAHA,  // 😂
+    EGGY,  // 🍆
 };
