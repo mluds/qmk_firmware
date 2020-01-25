@@ -6,6 +6,7 @@
 
 #define SKYPE_MUTE LGUI(KC_F4)
 #define CAD LCTL(LALT(KC_DEL))
+#define TASKMAN LCTL(LSFT(KC_ESC))
 #define ALT_F4 LALT(KC_F4)
 #define ALT_TAB LALT(KC_TAB)
 
