@@ -1,0 +1,3 @@
+USER_NAME := ''
+NKRO_ENABLE = yes
+EXTRAKEY_ENABLE = yes
